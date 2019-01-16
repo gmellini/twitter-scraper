@@ -1,12 +1,15 @@
 # Twitter Scraper
-Twitter's API doesn't allow you to get replies to a particular tweet. 
-But you can use Twitter's Search API to search for replies to a given tweet and replies to any replies as well.
+Twitter's API doesn't allow you to get all the replies to a particular tweet, but you can use it to search for replies to a given tweet and replies to any reply as well.
 
-__!! IMPORTANT !!__
+This script allows you to **get a complete list of twitter thread replies**, useful if you want have a fast and complete view of complex threads.
 
+The csv output can be used to diff between different iteration of the script to **check for new replies and get notified about it** (examples coming)
+
+## Limitation
 Twitter search API only returns results from last 7 days. This means that __search results are limited to last 7 days__
 
-```twitter-scraper.py``` reads a text file full of tweets URL (one per line) in the following format 
+## twitter-scraper.py
+```twitter-scraper.py``` reads a text file fileed with tweets URL (one per line) in the following format 
 ```https://twitter.com/<SCREEN_NAME>/status/<ID>```
 
 The script checks and writes to stdout any reply to the given tweet, keeping replies indentation.
@@ -19,7 +22,9 @@ Options:
 -f  : name of the input file that contains twitter URLs (1 per line) in the following format: https://twitter.com/<SCREEN_NAME>/status/<ID>
 -s  : csv output; useful to diff content between different iterations of the script
 ```
+## Requirements
 The script is tested with python 2.7 and 3.6 on Ubuntu 18.04 and 18.10 
+
 To start playing with ```twitter-scraper.py```:
 * install required pip packages:
 ```
@@ -41,7 +46,7 @@ ACCESS_TOKEN_SECRET
   * Full list here: https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568
   * Current: ```local_timezone = 'Europe/Rome'```
 
-Example:
+## Examples
 ```
 $ ./twitter-scraper.py  -f tweet.list
 [...]
@@ -77,5 +82,6 @@ date,reply,parent_thread
 [...]
 
 ```
+## Credits
 Based on the initial work made by @edsu
 https://gist.github.com/edsu/54e6f7d63df3866a87a15aed17b51eaf
