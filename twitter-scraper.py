@@ -2,7 +2,8 @@
 
 """
 Author: Giovanni merlos Mellini
-More: https://wp.me/p6LD4A-dH
+Github project page: https://github.com/gmellini/twitter-scraper
+Blog page: https://wp.me/p6LD4A-dH
 License: GNU General Public License v3.0
          https://github.com/gmellini/twitter-scraper/blob/master/LICENSE
 
