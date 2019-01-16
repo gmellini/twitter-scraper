@@ -249,9 +249,6 @@ def main(argv):
                     print('%s| Date:\t %s' % (tabs, human_date))
                     print('%s| URL:\t https://twitter.com/%s/status/%s' % (tabs, j['user']['screen_name'], j['id']))
                     print('%s| %s' % (tabs, j['text']))
-                    #print('%s|\t\t' % (tabs)),
-                    #for char in j['text']:
-                    #    print('%s' % (char)),
                     print('%s\\----------------------------------' % (tabs))
                     print ('')
 
