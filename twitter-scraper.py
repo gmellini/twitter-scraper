@@ -7,12 +7,12 @@ Blog page: https://wp.me/p6LD4A-dH
 License: GNU General Public License v3.0
          https://github.com/gmellini/twitter-scraper/blob/master/LICENSE
 
-This script allows you to get a complete list of twitter thread replies, 
-useful if you want have a fast and complete view of complex threads.
-
-The csv output can be used to diff between different iteration of the script 
-to check for new replies and get notified about it (examples coming)
-
+This script allows you to
+- get a complete list of twitter thread replies so you can have a fast and 
+  complete view of complex threads
+- check for new replies and get notified about it using the csv output to diff 
+  between scheduled iteration of the script (example coming)
+  
 = Twitter Access Tokens = 
 Twitter's API doesn't allow you to get all the replies to a particular tweet, 
 but you can use it to search for replies to a given tweet and replies to any 
