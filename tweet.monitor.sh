@@ -23,8 +23,6 @@ fi
 
 echo "Checking for new tweets..."
 DIFF=$(diff -u ${LOG}.old ${LOG} | grep '^\+[0-9]' > ${LOG}.diff)
-#res=$(diff -u ${LOG}.old ${LOG} | grep '^\+[0-9]' | wc -l)
-#if [ ${res} -eq 0 ]; then
 if [ $(cat ${LOG}.diff | wc -l) -eq 0 ]; then
   echo "Cannot find new replies"
   echo "Bye!"
@@ -32,7 +30,6 @@ if [ $(cat ${LOG}.diff | wc -l) -eq 0 ]; then
 fi
 
 echo "Found ${res} new replies"
-#for line in $(diff -u ${LOG}.old ${LOG} | grep '^\+[0-9]'); do
 while read line; do
   ONE=$(echo ${line} | cut -f 1 -d ',' | tr -d +)
   TWO=$(echo ${line} | cut -f 2 -d ',')
