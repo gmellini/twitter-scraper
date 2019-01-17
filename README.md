@@ -1,9 +1,14 @@
 # Twitter Scraper
-Twitter's API doesn't allow you to get all the replies to a particular tweet, but you can use it to search for replies to a given tweet and replies to any reply as well.
-
 This script allows you to **get a complete list of twitter thread replies**, useful if you want have a fast and complete view of complex threads.
 
 The csv output can be used to diff between different iteration of the script to **check for new replies and get notified about it** (examples coming)
+
+## Twitter Access Tokens
+Twitter's API doesn't allow you to get all the replies to a particular tweet, but you can use it to search for replies to a given tweet and replies to any reply as well.
+
+Before start playing with ```twitter-scraper.py``` you need your Twitter access tokens (keys/secrets).
+
+Generate here https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html
 
 ## Limitation
 Twitter search API only returns results from last 7 days. This means that __search results are limited to last 7 days__
