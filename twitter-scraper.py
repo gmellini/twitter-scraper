@@ -7,36 +7,44 @@ Blog page: https://wp.me/p6LD4A-dH
 License: GNU General Public License v3.0
          https://github.com/gmellini/twitter-scraper/blob/master/LICENSE
 
-Based on the initial work made by @edsu
- https://gist.github.com/edsu/54e6f7d63df3866a87a15aed17b51eaf
+This script allows you to get a complete list of twitter thread replies, 
+useful if you want have a fast and complete view of complex threads.
 
-Twitter's API doesn't allow you to get replies to a particular tweet. 
-But you can use Twitter's Search API to search for replies to a given tweet
-and replies to any replies as well. 
+The csv output can be used to diff between different iteration of the script 
+to check for new replies and get notified about it (examples coming)
 
-!! IMPORTANT !!
-Twitter search API only returns results from last 7 days.
-The search is limited to last 7 days.
+= Twitter Access Tokens = 
+Twitter's API doesn't allow you to get all the replies to a particular tweet, 
+but you can use it to search for replies to a given tweet and replies to any 
+reply as well. Before start playing with twitter-scraper.py you need your 
+Twitter access tokens (keys/secrets).
 
-twitter-scraper.py reads a text file (-f option is mandatory) filled with 
-tweets URL (one per line) in this format 
-    https://twitter.com/<SCREEN_NAME>/status/<ID>
+Generate here 
+https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html
 
-The script check and write to stdout any reply to the given tweet keeping
+= LIMITATION =
+Twitter search API only returns results from last 7 days. This means that 
+search results are limited to last 7 days
+
+= TWITTER-SCRAPER-PY =
+twitter-scraper.py reads a text file fileed with tweets URL (one per line) in 
+the following format https://twitter.com/<SCREEN_NAME>/status/<ID>
+The script checks and writes to stdout any reply to the given tweet, keeping 
 replies indentation.
 
 Option -s gives a short output that can be useful to diff content between 
-different iterations of the script; this way you can check for newer replies.
+different iterations of the script; this way you can check for newer replies 
+and notify.
 
-$ ./twitter-scraper.py -h
 usage: twitter-scraper.py -f file [-s]
 Options:
 -f  : name of the input file that contains twitter URLs (1 per line) in the following format: https://twitter.com/<SCREEN_NAME>/status/<ID>
 -s  : csv output; useful to diff content between different iterations of the script
 
+= REQUIREMENTS =
 The script is tested with python 2.7 and 3.6 on Ubuntu 18.04 and 18.10
+To start playing with twitter-scraper.py:
 
-To start playing with twitter-scraper:
 - install required pip packages:
     # Python 2.7
     sudo pip install python-twitter
@@ -44,22 +52,24 @@ To start playing with twitter-scraper:
     # Python 3
     sudo pip3 install python-twitter
     sudo pip3 install pytz
-
 - adapt global vars; find&replace following placeholders:
-    - CONSUMER_KEY
-    - CONSUMER_SECRET
-    - ACCESS_TOKEN
-    - ACCESS_TOKEN_SECRET
-
+    CONSUMER_KEY
+    CONSUMER_SECRET
+    ACCESS_TOKEN
+    ACCESS_TOKEN_SECRET
 - modify your timezone to have local dates
     - Full list here: https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568
     - Current: local_timezone = 'Europe/Rome'
 
-Example:
+= EXAMPLES =
 $ ./twitter-scraper.py  -f tweet.list
 [...]
 $ ./twitter-scraper.py  -f tweet.list -s
 [...]
+
+= CREDITS = 
+Based on the initial work made by @edsu
+ https://gist.github.com/edsu/54e6f7d63df3866a87a15aed17b51eaf
 """
 
 import sys
@@ -216,6 +226,14 @@ def main(argv):
 
     if not os.path.exists(file_in):
         print('[ERROR] File %s not exists' % (file_in))
+        print('')
+        print_usage()
+        sys.exit(2)
+
+    # Verify key/secrets
+    if e["consumer_key"] is "CONSUMER_KEY" or e['consumer_secret'] is "CONSUMER_SECRET" or e["access_token_key"] is "ACCESS_TOKEN" or e['access_token_secret'] is "ACCESS_TOKEN_SECRET":
+        print('[ERROR] It seems that Twitter key/secrets where not set.')
+        print('\tGenerate here https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html and set to start playing')
         print('')
         print_usage()
         sys.exit(2)
