@@ -1,23 +1,13 @@
 # Twitter Scraper
-This project is composed of 2 scripts
+This project is made of 2 scripts
 * [twitter-scraper.py](/twitter-scraper.py) to **get a complete list of twitter threads replies** so you can have a fast and complete view of complex threads even if you are not cited in all the tweet branches
 * [tweet.monitor.sh](/tweet.monitor.sh) to **check and be notified about new twitter threads replies**
-
-## Twitter Access Tokens
-Twitter's API doesn't allow you to get all the replies to a particular tweet, but you can use it to search for replies to a given tweet and replies to any reply as well.
-
-Before start playing with ```twitter-scraper.py``` you need your Twitter access tokens (keys/secrets).
-
-Generate here https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html
-
-## Limitation
-Twitter search API only returns results from last 7 days. This means that __search results are limited to last 7 days__
 
 ## twitter-scraper.py
 ```twitter-scraper.py``` reads a text file fileed with tweets URL (one per line) in the following format 
 ```https://twitter.com/<SCREEN_NAME>/status/<ID>```
 
-The script checks and writes to stdout any reply to the given tweet, keeping replies indentation.
+The script checks for replies to the given tweet and writes to stdout, keeping replies indentation.
 
 Option ```-s``` gives a short output that can be useful to diff content between different iterations of the script; this way you can check for newer replies and notify.
 
@@ -27,6 +17,16 @@ Options:
 -f  : name of the input file that contains twitter URLs (1 per line) in the following format: https://twitter.com/<SCREEN_NAME>/status/<ID>
 -s  : csv output; useful to diff content between different iterations of the script
 ```
+### Twitter Access Tokens
+Before start playing with ```twitter-scraper.py``` you need your Twitter access tokens (keys/secrets).
+
+Generate here https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html
+
+Twitter's API doesn't allow you to get all the replies to a tweet, the script use it to search for replies to a given tweet and replies to any reply as well.
+
+#### Limitation
+Twitter search API only returns results from last 7 days. This means that __search results are limited to last 7 days__
+
 ### Requirements
 The script is tested with python 2.7 and 3.6 on Ubuntu 18.04 and 18.10 
 
