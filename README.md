@@ -40,16 +40,19 @@ sudo pip install pytz
 sudo pip3 install python-twitter
 sudo pip3 install pytz
 ```
-* adapt global vars; find&replace following placeholders:
+### Configuration
+Before first run change twitter access tokens. Find and replace following placeholders (**mandatory**)
 ```
 CONSUMER_KEY
 CONSUMER_SECRET
 ACCESS_TOKEN
 ACCESS_TOKEN_SECRET
 ```
-* modify your timezone to have local dates
-  * Full list here: https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568
-  * Current: ```local_timezone = 'Europe/Rome'```
+Modify script ```local_timezone``` var to print tweet dates in your locale (**optional**)
+```
+local_timezone = 'Europe/Rome'
+```
+Full list here: https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568
 
 ## tweet.monitor.sh
 ```tweet.monitor.sh``` is a bash script that uses ```twitter-scraper.py``` csv output to diff between two iteration of the script and show new replies (if any).
