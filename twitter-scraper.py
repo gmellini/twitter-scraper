@@ -1,26 +1,21 @@
 #!/usr/bin/env python
 
 """
-Author: Giovanni merlos Mellini
-Github project page: https://github.com/gmellini/twitter-scraper
-Blog page: https://wp.me/p6LD4A-dH
+Author:  Giovanni merlos Mellini
 License: GNU General Public License v3.0
          https://github.com/gmellini/twitter-scraper/blob/master/LICENSE
 
-This script allows you to
-- get a complete list of twitter thread replies so you can have a fast and 
-  complete view of complex threads
-- check for new replies and get notified about it using the csv output to diff 
-  between scheduled iteration of the script (example coming)
+This script allows you to get a complete list of twitter threads replies 
+so you can have a fast and complete view of complex threads even if you 
+are not cited in all the tweet branches
+
+Check https://github.com/gmellini/twitter-scraper to read more on this
   
 = Twitter Access Tokens = 
-Twitter's API doesn't allow you to get all the replies to a particular tweet, 
-but you can use it to search for replies to a given tweet and replies to any 
-reply as well. Before start playing with twitter-scraper.py you need your 
-Twitter access tokens (keys/secrets).
+Generate here
+ https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html
 
-Generate here 
-https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html
+and modify [ CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET ]
 
 = LIMITATION =
 Twitter search API only returns results from last 7 days. This means that 
@@ -38,13 +33,12 @@ and notify.
 
 usage: twitter-scraper.py -f file [-s]
 Options:
--f  : name of the input file that contains twitter URLs (1 per line) in the following format: https://twitter.com/<SCREEN_NAME>/status/<ID>
+-f  : name of the input file that contains twitter URLs (1 per line) in the following 
+      format: https://twitter.com/<SCREEN_NAME>/status/<ID>
 -s  : csv output; useful to diff content between different iterations of the script
 
 = REQUIREMENTS =
 The script is tested with python 2.7 and 3.6 on Ubuntu 18.04 and 18.10
-To start playing with twitter-scraper.py:
-
 - install required pip packages:
     # Python 2.7
     sudo pip install python-twitter
@@ -52,11 +46,6 @@ To start playing with twitter-scraper.py:
     # Python 3
     sudo pip3 install python-twitter
     sudo pip3 install pytz
-- adapt global vars; find&replace following placeholders:
-    CONSUMER_KEY
-    CONSUMER_SECRET
-    ACCESS_TOKEN
-    ACCESS_TOKEN_SECRET
 - modify your timezone to have local dates
     - Full list here: https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568
     - Current: local_timezone = 'Europe/Rome'
