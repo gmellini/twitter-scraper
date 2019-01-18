@@ -1,4 +1,30 @@
 #!/bin/bash
+
+# Author:  Giovanni merlos Mellini
+# License: GNU General Public License v3.0
+#         https://github.com/gmellini/twitter-scraper/blob/master/LICENSE
+#
+# This script allows you to check and be notified about new twitter threads replies#
+# Check https://github.com/gmellini/twitter-scraper to read more on this
+#
+# Put your tweets in tweet.list file or edit TWEETLIST var to change input file
+# 
+# = EXAMPLE =
+# $ ./tweet.monitor.sh 
+# === TWEET MONITOR ===
+# Log file found, archiving...
+# Executing ~/twitter-scraper/twitter-scraper.py...
+# Checking for new tweets...
+# Found  new replies
+# > New reply to tweet https://twitter.com/benkow_/status/1085483319347867649 on 16/01/2019 14:23:07
+# >> link: https://twitter.com/cyb3rops/status/1085527873610485760
+#
+# Bye!
+#
+# = CREDITS = 
+# Based on the initial work made by @edsu
+#  https://gist.github.com/edsu/54e6f7d63df3866a87a15aed17b51eaf
+
 echo "=== TWEET MONITOR ==="
 
 PWD=$(pwd)
