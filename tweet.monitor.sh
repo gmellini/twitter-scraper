@@ -43,7 +43,7 @@ echo "Executing ${SCRAPER}..."
 ${SCRAPER} -f ${TWEETLIST} -s > ${LOG}
 if [ $? -ne 0 ]; then
   echo "[ERROR] Error executing \"${SCRAPER} -f ${TWEETLIST}\" command"
-  rm -f ${LOG}.old
+  mv ${LOG}.old ${LOG}
   exit 1
 fi
 
