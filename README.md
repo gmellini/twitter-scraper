@@ -63,6 +63,9 @@ twitter-scraper.py -f tweet.list -s
 ```
 Put your tweets in ```tweet.list``` file or edit ```TWEETLIST``` var
 
+If ```lynx``` is installed (```sudo apt install lynx```) the tweet content is printed
+![tweet content via lynx](img1.png)
+
 ## Examples
 ## twitter-scraper.py
 ### command line
@@ -112,9 +115,13 @@ Log file found, archiving...
 Executing ~/twitter-scraper/twitter-scraper.py...
 Checking for new tweets...
 Found  new replies
-> New reply to tweet https://twitter.com/benkow_/status/1085483319347867649 on 16/01/2019 14:23:07
->> link: https://twitter.com/cyb3rops/status/1085527873610485760
 
+> New reply to tweet https://twitter.com/iGio90/status/1244250696125427715 on 30/03/2020 11:32:10
+>> link: https://twitter.com/marketingpmi/status/1244558024548769796
+---
+Giovanni fai come vuoi. Di solito non si fa cosi. E se è stato sistemato in meno di 6 ore (tra l'altro di domenica) significa che dietro ci sono persone in gamba e proattive che magari potevi aiutare senza tutto sto casino. Gli errori li facciamo tutti in ICT. Cmq grazie… https://t.co/DCXmmg1GtY" 
+---
+[...]
 Bye!
 ```
 ### video
