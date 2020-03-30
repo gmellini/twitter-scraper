@@ -56,12 +56,26 @@ if [ $(cat ${LOG}.diff | wc -l) -eq 0 ]; then
 fi
 
 echo "Found ${res} new replies"
+echo
+LYNX=$(which lynx)
 while read line; do
   ONE=$(echo ${line} | cut -f 1 -d ',' | tr -d +)
   TWO=$(echo ${line} | cut -f 2 -d ',')
   THREE=$(echo ${line} | cut -f 3 -d ',')
   echo "> New reply to tweet ${THREE} on ${ONE}"
   echo ">> link: ${TWO}"
+  if [ ! "A${LYNX}" = "A" ]; then
+    echo "---"
+    lynx -dump "${TWO}" \
+      | grep 'Twitter:' -m1 -A4 \
+      | tr -d '\n' \
+      | sed -e 's/[^"]*"//' -e 's/\[[0-9]*\][a-zA-Z]*//g' \
+      | tr -s ' '
+    echo
+    echo "---"
+  else
+    echo "[INFO] lynx not installed, cannot get tweet content"
+  fi
   echo
 done < <(cat ${LOG}.diff) 
 
