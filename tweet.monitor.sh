@@ -57,21 +57,37 @@ fi
 
 echo "Found ${res} new replies"
 echo
-LYNX=$(which lynx)
+CURL=$(which curl)
 while read line; do
   ONE=$(echo ${line} | cut -f 1 -d ',' | tr -d +)
   TWO=$(echo ${line} | cut -f 2 -d ',')
   THREE=$(echo ${line} | cut -f 3 -d ',')
   echo "> New reply to tweet ${THREE} on ${ONE}"
   echo ">> link: ${TWO}"
-  if [ ! "A${LYNX}" = "A" ]; then
+  # check https://github.com/gmellini/twitter-scraper/issues/1
+  if [ ! "A${CURL}" = "A" ]; then
+    # Set API key and API secret key
+    # https://developer.twitter.com/en/docs/basics/authentication/oauth-2-0/bearer-tokens
+    APIKEY="YOUR_API_KEY"
+    APISECRETKEY="YOUR_API_SECRET_KEY"
+    TWEETID=$(echo $TWO | awk -F/ '{print $NF}')
+    BEARER=$(${CURL} -X POST "https://api.twitter.com/oauth2/token" \
+        -H "Content-Type: application/x-www-form-urlencoded;charset=UTF-8" \
+        -u ${APIKEY}:${APISECRETKEY} \
+        --data-urlencode "grant_type=client_credentials" 2> /dev/null \
+        | grep -Po '"access_token":.*?[^\\]"}' \
+        | sed s/^\"access_token\":\"// \
+        | sed s/\"}$//)
     echo "---"
-    lynx -dump "${TWO}" \
-      | grep 'Twitter:' -m1 -A4 \
-      | tr -d '\n' \
-      | sed -e 's/[^"]*"//' -e 's/\[[0-9]*\][a-zA-Z]*//g' \
-      | tr -s ' '
-    echo
+    TEXT=$(${CURL} --request GET \
+        --url "https://api.twitter.com/1.1/statuses/show.json?id=${TWEETID}" \
+        --header "authorization: Bearer ${BEARER}" \
+        --header 'content-type: application/json' 2> /dev/null \
+        | grep -Po '"text":.*?[^\\]",' \
+        | head -1 \
+        | sed s/^\"text\":\"// \
+	| sed s/\",$//)
+    echo -e $TEXT
     echo "---"
   else
     echo "[INFO] lynx not installed, cannot get tweet content"
