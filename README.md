@@ -63,9 +63,8 @@ twitter-scraper.py -f tweet.list -s
 ```
 Put your tweets in ```tweet.list``` file or edit ```TWEETLIST``` var
 
-If ```curl``` is installed (```sudo apt install curl```) the tweet content is printed. 
+If ```curl``` is installed (```sudo apt install curl```) the tweet content is printed; in this case remember to set ```APIKEY``` and ```APISECRETKEY``` to the same value of ```CONSUMER_KEY``` and ```CONSUMER_SECRET``` in ```twitter-scraper.py``` file
 
-Remember to set ```APIKEY``` and ```APISECRETKEY``` to the same value of ```CONSUMER_KEY``` and ```CONSUMER_SECRET``` in ```twitter-scraper.py``` file.
 ![tweet content via lynx](img1.png)
 
 ## Examples
