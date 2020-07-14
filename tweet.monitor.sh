@@ -90,7 +90,7 @@ while read line; do
     echo -e $TEXT
     echo "---"
   else
-    echo "[INFO] lynx not installed, cannot get tweet content"
+    echo "[INFO] curl not installed, cannot get tweet content"
   fi
   echo
 done < <(cat ${LOG}.diff) 
