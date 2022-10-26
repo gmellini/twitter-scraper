@@ -28,7 +28,7 @@ Twitter's API doesn't allow you to get all the replies to a tweet, the script us
 Twitter search API only returns results from last 7 days. This means that __search results are limited to last 7 days__
 
 ### Requirements
-The script is tested with python 2 and 3 on Ubuntu (from 18.04 to 20.04)
+The script is tested with python 2 and 3 on Ubuntu (from 18.04 to 22.04)
 
 To start playing with ```twitter-scraper.py```:
 * install required pip packages:
