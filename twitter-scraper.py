@@ -220,7 +220,7 @@ def main(argv):
         sys.exit(2)
 
     # Verify key/secrets
-    if e["consumer_key"] is "CONSUMER_KEY" or e['consumer_secret'] is "CONSUMER_SECRET" or e["access_token_key"] is "ACCESS_TOKEN" or e['access_token_secret'] is "ACCESS_TOKEN_SECRET":
+    if e["consumer_key"] == "CONSUMER_KEY" or e['consumer_secret'] == "CONSUMER_SECRET" or e["access_token_key"] == "ACCESS_TOKEN" or e['access_token_secret'] == "ACCESS_TOKEN_SECRET":
         print('[ERROR] It seems that Twitter key/secrets where not set.')
         print('\tGenerate here https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html and set to start playing')
         print('')
