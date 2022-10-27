@@ -40,7 +40,7 @@ else
 fi
 
 echo "Executing ${SCRAPER}..."
-${SCRAPER} -f ${TWEETLIST} -s > ${LOG}
+pytrhon ${SCRAPER} -f ${TWEETLIST} -s > ${LOG}
 if [ $? -ne 0 ]; then
   echo "[ERROR] Error executing \"${SCRAPER} -f ${TWEETLIST}\" command"
   mv ${LOG}.old ${LOG}
